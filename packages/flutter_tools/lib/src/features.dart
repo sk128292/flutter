@@ -88,10 +88,6 @@ const Feature flutterWebFeature = Feature(
     enabledByDefault: flutterNext,
   ),
   beta: FeatureChannelSetting(
-    available: true,
-    enabledByDefault: flutterNext,
-  ),
-  stable: FeatureChannelSetting(
     available: flutterNext,
     enabledByDefault: flutterNext,
   ),
@@ -102,8 +98,9 @@ const Feature flutterMacOSDesktopFeature = Feature(
   name: 'beta-quality support for desktop on macOS',
   configSetting: 'enable-macos-desktop',
   environmentOverride: 'FLUTTER_MACOS',
-  extraHelpText: flutterNext ?
-      'Newer beta versions are available on the beta channel.' : null,
+  extraHelpText: flutterNext
+      ? 'Newer beta versions are available on the beta channel.'
+      : null,
   master: FeatureChannelSetting(
     available: true,
     enabledByDefault: false,
@@ -127,8 +124,9 @@ const Feature flutterLinuxDesktopFeature = Feature(
   name: 'beta-quality support for desktop on Linux',
   configSetting: 'enable-linux-desktop',
   environmentOverride: 'FLUTTER_LINUX',
-  extraHelpText: flutterNext ?
-      'Newer beta versions are available on the beta channel.' : null,
+  extraHelpText: flutterNext
+      ? 'Newer beta versions are available on the beta channel.'
+      : null,
   master: FeatureChannelSetting(
     available: true,
     enabledByDefault: false,
@@ -152,8 +150,9 @@ const Feature flutterWindowsDesktopFeature = Feature(
   name: 'beta-quality support for desktop on Windows',
   configSetting: 'enable-windows-desktop',
   environmentOverride: 'FLUTTER_WINDOWS',
-  extraHelpText: flutterNext ?
-      'Newer beta versions are available on the beta channel.' : null,
+  extraHelpText: flutterNext
+      ? 'Newer beta versions are available on the beta channel.'
+      : null,
   master: FeatureChannelSetting(
     available: true,
     enabledByDefault: false,
@@ -194,7 +193,6 @@ const Feature flutterAndroidFeature = Feature(
   ),
 );
 
-
 /// The [Feature] for iOS devices.
 const Feature flutterIOSFeature = Feature(
   name: 'Flutter for iOS',
@@ -229,26 +227,25 @@ const Feature flutterFuchsiaFeature = Feature(
 );
 
 const Feature flutterCustomDevicesFeature = Feature(
-  name: 'Early support for custom device types',
-  configSetting: 'enable-custom-devices',
-  environmentOverride: 'FLUTTER_CUSTOM_DEVICES',
-  master: FeatureChannelSetting(
-    available: true,
-    enabledByDefault: false,
-  ),
-  dev: FeatureChannelSetting(
-    available: true,
-    enabledByDefault: false,
-  ),
-  beta: FeatureChannelSetting(
-    available: false,
-    enabledByDefault: false,
-  ),
-  stable: FeatureChannelSetting(
-    available: false,
-    enabledByDefault: false,
-  )
-);
+    name: 'Early support for custom device types',
+    configSetting: 'enable-custom-devices',
+    environmentOverride: 'FLUTTER_CUSTOM_DEVICES',
+    master: FeatureChannelSetting(
+      available: true,
+      enabledByDefault: false,
+    ),
+    dev: FeatureChannelSetting(
+      available: true,
+      enabledByDefault: false,
+    ),
+    beta: FeatureChannelSetting(
+      available: false,
+      enabledByDefault: false,
+    ),
+    stable: FeatureChannelSetting(
+      available: false,
+      enabledByDefault: false,
+    ));
 
 /// The fast hot reload feature for https://github.com/flutter/flutter/issues/61407.
 const Feature singleWidgetReload = Feature(
@@ -316,16 +313,15 @@ const Feature windowsUwpEmbedding = Feature(
 /// settings.
 class Feature {
   /// Creates a [Feature].
-  const Feature({
-    required this.name,
-    this.environmentOverride,
-    this.configSetting,
-    this.extraHelpText,
-    this.master = const FeatureChannelSetting(),
-    this.dev = const FeatureChannelSetting(),
-    this.beta = const FeatureChannelSetting(),
-    this.stable = const FeatureChannelSetting()
-  });
+  const Feature(
+      {required this.name,
+      this.environmentOverride,
+      this.configSetting,
+      this.extraHelpText,
+      this.master = const FeatureChannelSetting(),
+      this.dev = const FeatureChannelSetting(),
+      this.beta = const FeatureChannelSetting(),
+      this.stable = const FeatureChannelSetting()});
 
   /// The user visible name for this feature.
   final String name;
@@ -379,8 +375,7 @@ class Feature {
     } else if (channels.length == 2) {
       buffer.write('the ${channels.join(' and ')} channels.');
     } else {
-      final String prefix = (channels.toList()
-        ..removeLast()).join(', ');
+      final String prefix = (channels.toList()..removeLast()).join(', ');
       buffer.write('the $prefix, and ${channels.last} channels.');
     }
     if (extraHelpText != null) {
